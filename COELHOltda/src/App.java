@@ -10,15 +10,23 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-
-        // clientes pré cadastrados para simplificar testes no menu
+        // clientes pré-cadastrados para simplificar testes no menu
         Cliente cliente1 = new Cliente("João Silva", "12345678901");
         Cliente cliente2 = new Cliente("Maria Oliveira", "234567890123");
         Cliente cliente3 = new Cliente("Ana Pereira", "3456789012345");
 
         Cliente.incluirCliente(cliente1);
         Cliente.incluirCliente(cliente2);
-        Cliente.incluirCliente(cliente3); /// para remover, basta apagar apenas esse trecho.
+        Cliente.incluirCliente(cliente3); // para remover, basta apagar apenas esse trecho.
+
+        // imóveis pré-cadastrados para simplificar testes no menu
+        Imovel imovel1 = new Imovel();
+        Imovel imovel2 = new Imovel();
+        Imovel imovel3 = new Imovel();
+
+        Imovel.incluirImovel(imovel1);
+        Imovel.incluirImovel(imovel2);
+        Imovel.incluirImovel(imovel3);
 
         // importante para o funcionamento do menu
         Scanner scanner = new Scanner(System.in);
@@ -26,56 +34,59 @@ public class App {
 
         while (opcao != 6) {
             System.out.println("Selecione uma opção:");
-            System.out.println("1. Incluir cliente");
-            System.out.println("2. Listar clientes");
-            System.out.println("3. Alterar nome do cliente");
-            System.out.println("4. Excluir cliente");
-            System.out.println("5. Cadastrar imóvel");
-
+            System.out.println("1. Incluir Cliente");
+            System.out.println("2. Listar Clientes");
+            System.out.println("3. Alterar Nome do Cliente");
+            System.out.println("4. Excluir Cliente");
+            System.out.println("5. Cadastrar Imóvel");
             System.out.println("6. Sair");
 
             opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer do scanner
-            Cliente cliente = new Cliente();
+
             switch (opcao) {
                 case 1:
-                    System.out.println("Digite o nome do cliente:");
+                    System.out.println("Incluir Cliente:");
+                    System.out.print("Digite o nome do cliente: ");
                     String nome = scanner.nextLine();
-                    System.out.println("Digite o CPF do cliente:");
+                    System.out.print("Digite o CPF do cliente: ");
                     String cpf = scanner.nextLine();
                     Cliente.incluirCliente(new Cliente(nome, cpf));
                     System.out.println("Cliente incluído com sucesso!");
                     break;
 
                 case 2:
-                    System.out.println("Lista de clientes:");
-                    System.out.println(cliente.listarClientes());
+                    System.out.println("Listar Clientes:");
+                    System.out.println(Cliente.listarClientes());
                     break;
 
                 case 3:
-                    System.out.println("Digite o CPF do cliente que deseja alterar");
-                    String Cpf = scanner.nextLine();
-                    Cliente clientePesquisado = Cliente.pesquisarCliente(Cpf);
+                    System.out.println("Alterar Nome do Cliente:");
+                    System.out.print("Digite o CPF do cliente que deseja alterar: ");
+                    String cpfAlterar = scanner.nextLine();
+                    Cliente clientePesquisado = Cliente.pesquisarCliente(cpfAlterar);
                     if (clientePesquisado != null) {
                         System.out.println("Nome atual: " + clientePesquisado.getNome());
-                        System.out.println("Digite o novo nome do cliente:");
+                        System.out.print("Digite o novo nome do cliente: ");
                         String novoNome = scanner.nextLine();
-                        Cliente.atualizarCliente(new Cliente(novoNome, Cpf), Cpf);
+                        Cliente.atualizarCliente(new Cliente(novoNome, cpfAlterar), cpfAlterar);
                         System.out.println("Nome do cliente atualizado com sucesso!");
                     } else {
                         System.out.println("Cliente não encontrado.");
                     }
                     break;
+
                 case 4:
-                    System.out.println("Digite o CPF do cliente que deseja excluir");
-                    String CpfEcluir = scanner.nextLine();
-                    Cliente clienteExcluir = Cliente.pesquisarCliente(CpfEcluir);
+                    System.out.println("Excluir Cliente:");
+                    System.out.print("Digite o CPF do cliente que deseja excluir: ");
+                    String cpfExcluir = scanner.nextLine();
+                    Cliente clienteExcluir = Cliente.pesquisarCliente(cpfExcluir);
                     if (clienteExcluir != null) {
                         System.out.println("Nome: " + clienteExcluir.getNome());
-                        System.out.println("Confirma a exclusão desse cliente?(S/N)");
+                        System.out.print("Confirma a exclusão desse cliente? (S/N): ");
                         char resposta = scanner.next().charAt(0);
                         if (resposta == 'S' || resposta == 's') {
-                            if (Cliente.excluirCliente(CpfEcluir)) {
+                            if (Cliente.excluirCliente(cpfExcluir)) {
                                 System.out.println("Cliente excluído com sucesso!");
                             } else {
                                 System.out.println("Erro ao excluir o cliente.");
@@ -87,13 +98,15 @@ public class App {
                         System.out.println("Cliente não encontrado.");
                     }
                     break;
+
                 case 5:
-                    System.out.println("Cadastrar Imóvel");
+                    System.out.println("Cadastrar Imóvel:");
                     System.out.print("Informe o código do imóvel: ");
                     int matricula = scanner.nextInt();
+                    scanner.nextLine(); // Limpar o buffer do scanner
 
                     System.out.print("Informe o endereço do imóvel: ");
-                    String endereco = scanner.next();
+                    String endereco = scanner.nextLine();
 
                     System.out.print("Informe a penúltima leitura: ");
                     int penultimaLeitura = scanner.nextInt();
@@ -101,14 +114,15 @@ public class App {
                     System.out.print("Informe a última leitura: ");
                     int ultimaLeitura = scanner.nextInt();
 
-                    Imovel imovel = new Imovel();
-                    imovel.setMatricula(matricula);
-                    imovel.setEndereco(endereco);
-                    imovel.setPenultimaLeitura(penultimaLeitura);
-                    imovel.setUltimaLeitura(ultimaLeitura);
-                    Imovel.incluirImovel(imovel);
+                    Imovel novoImovel = new Imovel();
+                    novoImovel.setMatricula(matricula);
+                    novoImovel.setEndereco(endereco);
+                    novoImovel.setPenultimaLeitura(penultimaLeitura);
+                    novoImovel.setUltimaLeitura(ultimaLeitura);
+                    Imovel.incluirImovel(novoImovel);
                     System.out.println("Imóvel incluído com sucesso!");
                     break;
+
                 case 6:
                     System.out.println("Saindo do sistema...");
                     break;
