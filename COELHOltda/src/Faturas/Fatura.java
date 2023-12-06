@@ -19,7 +19,12 @@ public class Fatura {
 
     // Construtor...
     public Fatura(int matricula, double ultimaLeitura, double penultimaLeitura) {
-        // Inicialização dos atributos...
+        this.matricula = matricula;
+        this.ultimaLeitura = ultimaLeitura;
+        this.penultimaLeitura = penultimaLeitura;
+        this.dataEmissao = new Date();
+        this.valorCalculado = calcularValor();
+        this.quitada = false;
     }
 
     // Método privado para calcular o valor...
