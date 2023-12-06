@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 class Leitura {
-    int matricula;
-    double ultimaLeitura;
-    double penultimaLeitura;
+    private int matricula;
+    private double ultimaLeitura;
+    private double penultimaLeitura;
 }
