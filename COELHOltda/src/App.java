@@ -56,8 +56,8 @@ public class App {
                     break;
 
                 case 2:
-                    System.out.println("Listar Clientes:");
-                    System.out.println(Cliente.listarClientes());
+                    // System.out.println("Listar Clientes:");
+                    // System.out.println(Cliente.listarClientes());
                     break;
 
                 case 3:
