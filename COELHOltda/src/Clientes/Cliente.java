@@ -34,7 +34,7 @@ public class Cliente {
         clientes.add(cliente);
     }
 
-    public String listarClientes() {
+    public static String listarClientes() {
         StringBuilder lista = new StringBuilder();
         for (Cliente cliente : clientes) {
             lista.append("Nome: ").append(cliente.getNome()).append(", CPF: ").append(cliente.getCpf()).append("\n");
