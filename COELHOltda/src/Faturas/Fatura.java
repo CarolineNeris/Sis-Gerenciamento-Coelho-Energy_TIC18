@@ -14,5 +14,7 @@ public class Fatura {
     private double penultimaLeitura;
     private double valorCalculado;
     private boolean quitada;
-    // Outros atributos e métodos necessários
+    private int matricula;
+    private Date dataEmissao;
+    
 }
