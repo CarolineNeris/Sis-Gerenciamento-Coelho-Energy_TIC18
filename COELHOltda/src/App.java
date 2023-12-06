@@ -29,20 +29,7 @@ public class App {
         Imovel.incluirImovel(imovel3);
 
         Scanner scanner = new Scanner(System.in);
-<<<<<<< HEAD
-        int opcao = 0;
-
-        while (opcao != 6) {
-            System.out.println("Selecione uma opção:");
-            System.out.println("1. Incluir Cliente");
-            System.out.println("2. Listar Clientes");
-            System.out.println("3. Alterar Nome do Cliente");
-            System.out.println("4. Excluir Cliente");
-            System.out.println("5. Cadastrar Imóvel");
-            System.out.println("6. Sair");
-=======
         int opcao;
->>>>>>> ee3dcd7091d2a4b58280c18025fedc17fd49afb9
 
         do {
             System.out.println("\nMenu Principal");
@@ -54,14 +41,6 @@ public class App {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-<<<<<<< HEAD
-            scanner.nextLine(); // Limpar o buffer do scanner
-
-            switch (opcao) {
-                case 1:
-                    System.out.println("Incluir Cliente:");
-                    System.out.print("Digite o nome do cliente: ");
-=======
 
             switch (opcao) {
                 case 1:
@@ -105,7 +84,6 @@ public class App {
             switch (opcaoClientes) {
                 case 1:
                     System.out.println("Digite o nome do cliente:");
->>>>>>> ee3dcd7091d2a4b58280c18025fedc17fd49afb9
                     String nome = scanner.nextLine();
                     System.out.print("Digite o CPF do cliente: ");
                     String cpf = scanner.nextLine();
@@ -113,13 +91,8 @@ public class App {
                     System.out.println("Cliente incluído com sucesso!");
                     break;
                 case 2:
-<<<<<<< HEAD
-                    // System.out.println("Listar Clientes:");
-                    // System.out.println(Cliente.listarClientes());
-=======
                     System.out.println("Lista de clientes:");
                     // System.out.println(cliente.listarClientes());
->>>>>>> ee3dcd7091d2a4b58280c18025fedc17fd49afb9
                     break;
 
                 case 3:
@@ -161,10 +134,6 @@ public class App {
                     }
                     break;
 
-<<<<<<< HEAD
-                case 5:
-                    System.out.println("Cadastrar Imóvel:");
-=======
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -194,7 +163,6 @@ public class App {
             switch (opcaoImoveis) {
                 case 1:
                     System.out.println("Cadastrar Imóvel");
->>>>>>> ee3dcd7091d2a4b58280c18025fedc17fd49afb9
                     System.out.print("Informe o código do imóvel: ");
                     int matricula = scanner.nextInt();
                     scanner.nextLine(); // Limpar o buffer do scanner
@@ -217,10 +185,6 @@ public class App {
                     System.out.println("Imóvel incluído com sucesso!");
                     break;
 
-<<<<<<< HEAD
-                case 6:
-                    System.out.println("Saindo do sistema...");
-=======
                 case 2:
                     // Listar;
                     break;
@@ -229,7 +193,6 @@ public class App {
                     break;
                 case 4:
                     // excluir;
->>>>>>> ee3dcd7091d2a4b58280c18025fedc17fd49afb9
                     break;
 
                 case 0:
@@ -240,8 +203,6 @@ public class App {
             }
         } while (opcaoImoveis != 0);
     }
-<<<<<<< HEAD
-=======
 
     private static void menuFaturas(Scanner scanner) {
         int opcaoFaturas;
@@ -362,5 +323,4 @@ public class App {
             }
         } while (opcaoReparos != 0);
     }
->>>>>>> ee3dcd7091d2a4b58280c18025fedc17fd49afb9
 }
