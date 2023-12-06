@@ -17,47 +17,73 @@ public class App {
 
         Cliente.incluirCliente(cliente1);
         Cliente.incluirCliente(cliente2);
-        Cliente.incluirCliente(cliente3); // para remover, basta apagar apenas esse trecho.
+        Cliente.incluirCliente(cliente3); /// para remover, basta apagar apenas esse trecho.
 
-        // imóveis pré-cadastrados para simplificar testes no menu
-        Imovel imovel1 = new Imovel();
-        Imovel imovel2 = new Imovel();
-        Imovel imovel3 = new Imovel();
-
-        Imovel.incluirImovel(imovel1);
-        Imovel.incluirImovel(imovel2);
-        Imovel.incluirImovel(imovel3);
-
-        // importante para o funcionamento do menu
         Scanner scanner = new Scanner(System.in);
-        int opcao = 0;
+        int opcao;
 
-        while (opcao != 6) {
-            System.out.println("Selecione uma opção:");
-            System.out.println("1. Incluir Cliente");
-            System.out.println("2. Listar Clientes");
-            System.out.println("3. Alterar Nome do Cliente");
-            System.out.println("4. Excluir Cliente");
-            System.out.println("5. Cadastrar Imóvel");
-            System.out.println("6. Sair");
-
+        do {
+            System.out.println("\nMenu Principal");
+            System.out.println("1. Gestão de Clientes");
+            System.out.println("2. Gestão de Imóveis");
+            System.out.println("3. Gestão de Faturas");
+            System.out.println("4. Gestão de Pagamentos");
+            System.out.println("5. Gestão de Falhas");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer do scanner
 
             switch (opcao) {
                 case 1:
-                    System.out.println("Incluir Cliente:");
-                    System.out.print("Digite o nome do cliente: ");
+                    menuClientes(scanner);
+                    break;
+                case 2:
+                    menuImoveis(scanner);
+                    break;
+                case 3:
+                    menuFaturas(scanner);
+                    break;
+                case 4:
+                    menuPagamentos(scanner);
+                    break;
+                case 5:
+                    menuFalhas(scanner);
+                    break;
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (opcao != 0);
+    }
+
+    private static void menuClientes(Scanner scanner) {
+        int opcaoClientes;
+
+        do {
+            System.out.println("\nGestão de Clientes");
+            System.out.println("1. Cadastrar Cliente");
+            System.out.println("2. Listar Clientes");
+            System.out.println("3. Excluir Cliente");
+            System.out.println("4. Alterar Cliente");
+            System.out.println("0. Voltar ao menu principal");
+            System.out.print("Escolha uma opção: ");
+            opcaoClientes = scanner.nextInt();
+
+            switch (opcaoClientes) {
+                case 1:
+                    System.out.println("Digite o nome do cliente:");
                     String nome = scanner.nextLine();
                     System.out.print("Digite o CPF do cliente: ");
                     String cpf = scanner.nextLine();
                     Cliente.incluirCliente(new Cliente(nome, cpf));
                     System.out.println("Cliente incluído com sucesso!");
                     break;
-
                 case 2:
-                    System.out.println("Listar Clientes:");
-                    System.out.println(Cliente.listarClientes());
+                    System.out.println("Lista de clientes:");
+                    // System.out.println(cliente.listarClientes());
                     break;
 
                 case 3:
@@ -99,8 +125,35 @@ public class App {
                     }
                     break;
 
-                case 5:
-                    System.out.println("Cadastrar Imóvel:");
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (opcaoClientes != 0);
+        // Adicione aqui as ações de cada opção
+
+        while (opcaoClientes != 0)
+            ;
+    }
+
+    private static void menuImoveis(Scanner scanner) {
+        int opcaoImoveis;
+
+        do {
+            System.out.println("\nGestão de Imoveis");
+            System.out.println("1. Cadastrar Imovel");
+            System.out.println("2. Listar Imovel");
+            System.out.println("3. Excluir Imovel");
+            System.out.println("4. Alterar Imovel");
+            System.out.println("0. Voltar ao menu principal");
+            System.out.print("Escolha uma opção: ");
+            opcaoImoveis = scanner.nextInt();
+
+            switch (opcaoImoveis) {
+                case 1:
+                    System.out.println("Cadastrar Imóvel");
                     System.out.print("Informe o código do imóvel: ");
                     int matricula = scanner.nextInt();
                     scanner.nextLine(); // Limpar o buffer do scanner
@@ -123,15 +176,142 @@ public class App {
                     System.out.println("Imóvel incluído com sucesso!");
                     break;
 
-                case 6:
-                    System.out.println("Saindo do sistema...");
+                case 2:
+                    // Listar;
+                    break;
+                case 3:
+                    // alterar;
+                    break;
+                case 4:
+                    // excluir;
                     break;
 
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                case 0:
+                    System.out.println("Saindo...");
                     break;
+                default:
+                    System.out.println("Opção inválida.");
             }
-        }
-        scanner.close();
+        } while (opcaoImoveis != 0);
+    }
+
+    private static void menuFaturas(Scanner scanner) {
+        int opcaoFaturas;
+
+        do {
+            System.out.println("\nGestão de Faturas");
+            System.out.println("1. Faturas abertas");
+            System.out.println("2. Listar Faturas ");
+            System.out.println("0. Voltar ao menu principal");
+            System.out.print("Escolha uma opção: ");
+            opcaoFaturas = scanner.nextInt();
+
+            switch (opcaoFaturas) {
+                case 1:
+                    // Faturas abertas;
+                    break;
+
+                case 2:
+                    // Listar Faturas;
+                    break;
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (opcaoFaturas != 0);
+    }
+
+    private static void menuPagamentos(Scanner scanner) {
+        int opcaoPagamentos;
+
+        do {
+            System.out.println("\nGestão de Pagamentos");
+            System.out.println("1. Inclusão de Pagamentos");
+            System.out.println("2.Listar Pagamentos ");
+            System.out.println("3.Listar Reembolsos  ");
+            System.out.println("0. Voltar ao menu principal");
+            System.out.print("Escolha uma opção: ");
+            opcaoPagamentos = scanner.nextInt();
+
+            switch (opcaoPagamentos) {
+                case 1:
+                    // Inclusão de Pagamentos;
+                    break;
+
+                case 2:
+                    // Listar Pagamentos;
+                    break;
+                case 3:
+                    // Listar Reembolsos;
+                    break;
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (opcaoPagamentos != 0);
+    }
+
+    private static void menuFalhas(Scanner scanner) {
+        int opcaoFalhas;
+
+        do {
+            System.out.println("\nGestão de Falhas");
+            System.out.println("1. Inclusão de Falhas");
+            System.out.println("2. Gestão de Reparos ");
+            System.out.println("0. Voltar ao menu principal");
+            System.out.print("Escolha uma opção: ");
+            opcaoFalhas = scanner.nextInt();
+
+            switch (opcaoFalhas) {
+                case 1:
+                    // Inclusão de Falhas;
+                    break;
+
+                case 2:
+                    menuReparos(scanner);
+                    break;
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (opcaoFalhas != 0);
+    }
+
+    private static void menuReparos(Scanner scanner) {
+        int opcaoReparos;
+
+        do {
+            System.out.println("\nGestão de Reparos");
+            System.out.println("1. Listar reparos em aberto");
+            System.out.println("2. Encerrar reparo ");
+            System.out.println("0. Voltar ao menu anterior");
+            System.out.print("Escolha uma opção: ");
+            opcaoReparos = scanner.nextInt();
+
+            switch (opcaoReparos) {
+                case 1:
+                    // Listar reparos em aberto;
+                    break;
+
+                case 2:
+                    // Encerrar reparo;
+                    break;
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (opcaoReparos != 0);
     }
 }
