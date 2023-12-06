@@ -124,3 +124,28 @@ Segue uma pequena descrição dos menus:
 |:---:|:---:|:---:|:---:|:---:|
 | [Ana Caroline](https://github.com/SeuPerfilAna) | [Nome Pessoa 2](URL do Perfil Pessoa 2) | [Nome Pessoa 3](URL do Perfil Pessoa 3) | [Nome Pessoa 4](URL do Perfil Pessoa 4) | [Nome Pessoa 5](URL do Perfil Pessoa 5) |
 
+### Participações dos Desenvolvedores no Código:
+
+[**Ana Caroline**](https://github.com/CarolineNeris)
+- Gestão de Clientes e Imóveis
+  - Clientes: Incluir, Consultar, Listar, Excluir, Alterar.
+  - Imóveis: Incluir, Consultar, Listar, Excluir, Alterar.
+
+[**Marcos**](URL DO PERFIL PESSOA2)
+- Gestão de Faturas
+  - Registrar o consumo.
+  - Listar faturas abertas ou todas.
+
+[Pessoa3e4](URL DO PERFIL PESSOA3)
+- Gestão de Pagamentos
+  - Incluir pagamentos.
+  - Listar pagamentos por fatura.
+  - Listar reembolsos por fatura.
+
+- Gestão de Falhas
+  - Incluir falhas (associadas ou não a um imóvel).
+
+[Pessoa5](URL DO PERFIL PESSOA5)
+- Gestão de Reparos:
+  - Listar reparos em aberto.
+  - Encerrar reparo, possivelmente gerando outro se necessário.
