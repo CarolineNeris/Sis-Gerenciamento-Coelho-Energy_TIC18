@@ -1,4 +1,4 @@
-package Leitura;
+package Leituras;
 
 public class Leituras {
     private int matricula;

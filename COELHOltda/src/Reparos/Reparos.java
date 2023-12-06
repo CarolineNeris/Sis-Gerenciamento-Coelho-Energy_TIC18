@@ -4,7 +4,7 @@ package Reparos;
 import Imoveis.Imovel;
 import Falhas.Falha;
 
-public class Reparo {
+public class Reparos {
     private Falha falhaAssociada;
     private String descricaoAtividade;
     private String previsaoInicial;
@@ -16,7 +16,7 @@ public class Reparo {
     // Métodos GET e SET para os atributos
 
     // Método construtor
-    public Reparo(Falha falhaAssociada, String descricaoAtividade, String previsaoInicial, String dataInicio,
+    public Reparos(Falha falhaAssociada, String descricaoAtividade, String previsaoInicial, String dataInicio,
             String dataFim) {
         this.falhaAssociada = falhaAssociada;
         this.descricaoAtividade = descricaoAtividade;
