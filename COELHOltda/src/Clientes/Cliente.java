@@ -3,16 +3,22 @@ package Clientes;
 public class Cliente {
     private String nome;
     private String cpf;
-    // Outros atributos necessários
 
-    // Métodos GET e SET para os atributos
-
-    // Método construtor
     public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
-        // Inicialização de outros atributos, se houver
     }
 
-    // Outros métodos específicos, se necessário
+    // Métodos para acessar e modificar os atributos
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
 }
