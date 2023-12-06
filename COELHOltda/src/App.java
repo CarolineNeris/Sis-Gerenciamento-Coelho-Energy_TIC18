@@ -3,21 +3,44 @@ import Reparos.*;
 import Pagamentos.*;
 import Imoveis.*;
 import Falhas.*;
+import Faturas.*;
+
+import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
-        // Criando um cliente
-        Cliente cliente1 = new Cliente("João", "123.456.789-00");
+        Scanner scanner = new Scanner(System.in);
+        int opcao = 0;
 
-        // Acessando e exibindo informações do cliente
-        System.out.println("Nome do cliente: " + cliente1.getNome());
-        System.out.println("CPF do cliente: " + cliente1.getCpf());
+        while (opcao != 6) {
+            System.out.println("Selecione uma opção:");
+            System.out.println("1. Incluir cliente");
 
-        // Modificando o nome do cliente
-        cliente1.setNome("Maria");
+            System.out.println("6. Sair");
 
-        // Exibindo o novo nome do cliente
-        System.out.println("Novo nome do cliente: " + cliente1.getNome());
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar o buffer do scanner
+            Cliente cliente = new Cliente();
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite o nome do cliente:");
+                    String nome = scanner.nextLine();
+                    System.out.println("Digite o CPF do cliente:");
+                    String cpf = scanner.nextLine();
+                    Cliente.incluirCliente(new Cliente(nome, cpf));
+                    System.out.println("Cliente incluído com sucesso!");
+                    break;
+
+                case 6:
+                    System.out.println("Saindo do sistema...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+        scanner.close();
     }
 }
