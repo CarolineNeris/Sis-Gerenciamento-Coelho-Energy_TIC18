@@ -29,7 +29,8 @@ public class App {
             System.out.println("1. Incluir cliente");
             System.out.println("2. Listar clientes");
             System.out.println("3. Alterar nome do cliente");
-            System.out.println("5. Excluir cliente");
+            System.out.println("4. Excluir cliente");
+            System.out.println("5. Cadastrar imóvel");
 
             System.out.println("6. Sair");
 
@@ -85,6 +86,28 @@ public class App {
                     } else {
                         System.out.println("Cliente não encontrado.");
                     }
+                    break;
+                case 5:
+                    System.out.println("Cadastrar Imóvel");
+                    System.out.print("Informe o código do imóvel: ");
+                    int matricula = scanner.nextInt();
+
+                    System.out.print("Informe o endereço do imóvel: ");
+                    String endereco = scanner.next();
+
+                    System.out.print("Informe a penúltima leitura: ");
+                    int penultimaLeitura = scanner.nextInt();
+
+                    System.out.print("Informe a última leitura: ");
+                    int ultimaLeitura = scanner.nextInt();
+
+                    Imovel imovel = new Imovel();
+                    imovel.setMatricula(matricula);
+                    imovel.setEndereco(endereco);
+                    imovel.setPenultimaLeitura(penultimaLeitura);
+                    imovel.setUltimaLeitura(ultimaLeitura);
+                    Imovel.incluirImovel(imovel);
+                    System.out.println("Imóvel incluído com sucesso!");
                     break;
                 case 6:
                     System.out.println("Saindo do sistema...");
