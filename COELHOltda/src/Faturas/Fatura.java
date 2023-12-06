@@ -16,5 +16,19 @@ public class Fatura {
     private boolean quitada;
     private int matricula;
     private Date dataEmissao;
-    
+
+    // Construtor...
+    public Fatura(int matricula, double ultimaLeitura, double penultimaLeitura) {
+        // Inicialização dos atributos...
+    }
+
+    // Método privado para calcular o valor...
+    private double calcularValor() {
+        return 10 * (ultimaLeitura - penultimaLeitura);
+    }
+
+    // Método público para exibir detalhes da fatura...
+    public void exibirDetalhes() {
+        // Código para exibir detalhes...
+    }
 }
