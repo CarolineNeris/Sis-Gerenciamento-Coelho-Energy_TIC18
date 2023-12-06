@@ -28,7 +28,9 @@ Além disso, cria-se uma instância de objeto do tipo Fatura, onde se registra o
 
 ## Diagrama até aqui
 
-![imagem1](link_para_imagem1.png)
+<center>
+    <img src="imagensdoreadme/1.png" alt="Diagrama 1">
+</center>
 
 ## Pagamentos
 
@@ -54,7 +56,9 @@ Mas pode acontecer de um pagamento superar, sozinho ou com a soma de outros, o v
 
 ## Diagrama até aqui:
 
-![imagem2](link_para_imagem2.png)
+<center>
+    <img src="imagensdoreadme/2.png" alt="Diagrama 2">
+</center>
 
 ## Falhas
 
@@ -84,7 +88,9 @@ Este reparo tem uma descrição da atividade que será desenvolvida (precisa ser
 
 ## Diagrama final do sistema:
 
-![imagem3](link_para_imagem3.png)
+<center>
+    <img src="imagensdoreadme/3.png" alt="Diagrama 3">
+</center>
 
 Segue uma pequena descrição dos menus:
 
@@ -105,3 +111,16 @@ Segue uma pequena descrição dos menus:
     - Gestão de Reparos
       - Listar reparos em aberto
       - Encerrar reparo (possivelmente criar outro)
+
+
+## Autores:
+
+
+
+
+
+
+| [<img src="https://avatars.githubusercontent.com/u/85597024?s=400&u=a2e62cbd29eecb1443a99a47115f3a8be2695be3&v=4" width=115>](https://github.com/CarolineNeris) | [<img src="URL do Avatar Pessoa 2" width=115>](URL do Perfil Pessoa 2) | [<img src="URL do Avatar Pessoa 3" width=115>](URL do Perfil Pessoa 3) | [<img src="URL do Avatar Pessoa 4" width=115>](URL do Perfil Pessoa 4) | [<img src="URL do Avatar Pessoa 5" width=115>](URL do Perfil Pessoa 5) |
+|:---:|:---:|:---:|:---:|:---:|
+| [Ana Caroline](https://github.com/SeuPerfilAna) | [Nome Pessoa 2](URL do Perfil Pessoa 2) | [Nome Pessoa 3](URL do Perfil Pessoa 3) | [Nome Pessoa 4](URL do Perfil Pessoa 4) | [Nome Pessoa 5](URL do Perfil Pessoa 5) |
+
