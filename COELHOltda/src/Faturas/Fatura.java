@@ -2,10 +2,8 @@
 package Faturas;
 
 import Imoveis.Imovel;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+
 
 
 public class Fatura {
