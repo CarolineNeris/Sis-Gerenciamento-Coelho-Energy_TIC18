@@ -1,13 +1,11 @@
 // Classe Fatura
 package Faturas;
 
-import Imoveis.Imovel;
 import java.util.Date;
 
 
 
 public class Fatura {
-    private Imovel imovel;
     private double ultimaLeitura;
     private double penultimaLeitura;
     private double valorCalculado;
