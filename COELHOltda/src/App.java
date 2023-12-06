@@ -16,6 +16,7 @@ public class App {
         while (opcao != 6) {
             System.out.println("Selecione uma opção:");
             System.out.println("1. Incluir cliente");
+            System.out.println("2. Listar clientes");
 
             System.out.println("6. Sair");
 
@@ -30,6 +31,12 @@ public class App {
                     String cpf = scanner.nextLine();
                     Cliente.incluirCliente(new Cliente(nome, cpf));
                     System.out.println("Cliente incluído com sucesso!");
+                    break;
+
+                case 2:
+                    System.out.println("Lista de clientes:");
+                    System.out.println(cliente.listarClientes());
+
                     break;
 
                 case 6:
