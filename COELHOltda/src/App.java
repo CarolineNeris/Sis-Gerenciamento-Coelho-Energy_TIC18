@@ -10,6 +10,17 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
+
+        // clientes pré cadastrados para simplificar testes no menu
+        Cliente cliente1 = new Cliente("João Silva", "12345678901");
+        Cliente cliente2 = new Cliente("Maria Oliveira", "234567890123");
+        Cliente cliente3 = new Cliente("Ana Pereira", "3456789012345");
+
+        Cliente.incluirCliente(cliente1);
+        Cliente.incluirCliente(cliente2);
+        Cliente.incluirCliente(cliente3); /// para remover, basta apagar apenas esse trecho.
+
+        // importante para o funcionamento do menu
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
 
@@ -18,6 +29,7 @@ public class App {
             System.out.println("1. Incluir cliente");
             System.out.println("2. Listar clientes");
             System.out.println("3. Alterar nome do cliente");
+            System.out.println("5. Excluir cliente");
 
             System.out.println("6. Sair");
 
