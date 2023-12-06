@@ -24,7 +24,7 @@ Neste momento, o valor que estava como "Última Leitura" no imóvel é passado p
 
 Além disso, cria-se uma instância de objeto do tipo Fatura, onde se registra os dados das duas últimas leituras, a data de emissão da Fatura (que é a data atual do sistema), o valor calculado (a fórmula de cálculo será apresentada oportunamente. Por enquanto admita que é calculado ao custo de 10 reais por KWh) e um flag, inicialmente setado como False, para indicar se a fatura já está completamente quitada.
 
-### O Menu Fatura deve permitir a criação de uma fatura, mas jamais sua exclusão (note que isto forçaria a recuperar o Penúltimo valor que foi apagado). Também deve permitir a listagem de todas as faturas, ou apenas das faturas em aberto (não pagas).
+- O Menu Fatura deve permitir a criação de uma fatura, mas jamais sua exclusão (note que isto forçaria a recuperar o Penúltimo valor que foi apagado). Também deve permitir a listagem de todas as faturas, ou apenas das faturas em aberto (não pagas).
 
 ## Diagrama até aqui
 
@@ -74,17 +74,17 @@ Há também as falhas de Distribuição, em que a responsabilidade é da COELHO 
 
 Este reparo tem uma descrição da atividade que será desenvolvida (precisa ser digitada), uma previsão inicial, uma data de início e de fim, e um flag para identificar se este reparo resolveu a falha ou não. Caso o reparo não tenha resolvido a falha encontrada, então outro processo de reparo mais avançado é iniciado, e assim sucessivamente.
 
-### O Menu de Falha, portanto, deve oferecer as opções de Incluir Falhas, e estas podem ser originadas de uma reclamação (e neste caso é associada a algum imóvel) ou não.
+- O Menu de Falha, portanto, deve oferecer as opções de Incluir Falhas, e estas podem ser originadas de uma reclamação (e neste caso é associada a algum imóvel) ou não.
 
-### No momento em que uma falha é incluída, em se tratando de uma falha de geração, ela fica apenas registrada até que seja resolvida pela empresa geradora de energia.
+- No momento em que uma falha é incluída, em se tratando de uma falha de geração, ela fica apenas registrada até que seja resolvida pela empresa geradora de energia.
 
-### Se a falha for de distribuição, então automaticamente é solicitada a criação de um Reparo, com uma descrição da atividade de reparo que será necessária, que é registrado com a data de início sendo a data do sistema.
+- Se a falha for de distribuição, então automaticamente é solicitada a criação de um Reparo, com uma descrição da atividade de reparo que será necessária, que é registrado com a data de início sendo a data do sistema.
 
-### É necessário criar um submenu de Reparos.
+- É necessário criar um submenu de Reparos.
 
-### No submenu de reparos é possível se listar todos os reparos em aberto, com as respectivas falhas a eles associadas.
+- No submenu de reparos é possível se listar todos os reparos em aberto, com as respectivas falhas a eles associadas.
 
-### Também é possível se encerrar um reparo, o que registra a data de Finalização do mesmo. Todavia, é necessário identificar se a falha foi resolvida. Em caso negativo é gerado, automaticamente, um novo reparo para a mesma falha, e a descrição deste novo reparo é solicitada.
+- Também é possível se encerrar um reparo, o que registra a data de Finalização do mesmo. Todavia, é necessário identificar se a falha foi resolvida. Em caso negativo é gerado, automaticamente, um novo reparo para a mesma falha, e a descrição deste novo reparo é solicitada.
 
 ## Diagrama final do sistema:
 
@@ -127,25 +127,25 @@ Segue uma pequena descrição dos menus:
 ### Participações dos Desenvolvedores no Código:
 
 [**Ana Caroline**](https://github.com/CarolineNeris)
-- Gestão de Clientes e Imóveis
+### Gestão de Clientes e Imóveis:
   - Clientes: Incluir, Consultar, Listar, Excluir, Alterar.
   - Imóveis: Incluir, Consultar, Listar, Excluir, Alterar.
 
 [**Marcos**](URL DO PERFIL PESSOA2)
-- Gestão de Faturas
+### Gestão de Faturas:
   - Registrar o consumo.
   - Listar faturas abertas ou todas.
 
 [Pessoa3e4](URL DO PERFIL PESSOA3)
-- Gestão de Pagamentos
+### Gestão de Pagamentos:
   - Incluir pagamentos.
   - Listar pagamentos por fatura.
   - Listar reembolsos por fatura.
 
-- Gestão de Falhas
+### Gestão de Falhas:
   - Incluir falhas (associadas ou não a um imóvel).
 
 [Pessoa5](URL DO PERFIL PESSOA5)
-- Gestão de Reparos:
+### Gestão de Reparos:
   - Listar reparos em aberto.
   - Encerrar reparo, possivelmente gerando outro se necessário.
