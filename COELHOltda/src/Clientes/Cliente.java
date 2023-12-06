@@ -42,4 +42,31 @@ public class Cliente {
         return lista.toString();
     }
 
+    public static Cliente pesquisarCliente(String cpf) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public static void atualizarCliente(Cliente clienteAtualizado, String cpf) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                cliente.setNome(clienteAtualizado.getNome());
+                break;
+            }
+        }
+    }
+
+    public static boolean excluirCliente(String cpf) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                return clientes.remove(cliente);
+            }
+        }
+        return false;
+    }
+
 }
