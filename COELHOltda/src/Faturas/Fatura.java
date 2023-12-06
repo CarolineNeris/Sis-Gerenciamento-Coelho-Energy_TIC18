@@ -34,6 +34,12 @@ public class Fatura {
 
     // Método público para exibir detalhes da fatura...
     public void exibirDetalhes() {
-        // Código para exibir detalhes...
+        System.out.println("\nDetalhes da Fatura:");
+        System.out.println("Matrícula: " + matricula);
+        System.out.println("Data de Emissão: " + dataEmissao);
+        System.out.println("Última Leitura: " + ultimaLeitura);
+        System.out.println("Penúltima Leitura: " + penultimaLeitura);
+        System.out.println("Valor Calculado: " + valorCalculado);
+        System.out.println("Quitada: " + (quitada ? "Sim" : "Não"));
     }
 }
