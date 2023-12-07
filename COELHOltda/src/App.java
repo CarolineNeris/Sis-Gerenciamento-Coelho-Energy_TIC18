@@ -7,6 +7,8 @@ import Falhas.*;
 import Faturas.*;
 import Faturas.Fatura;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,8 +19,9 @@ public class App {
     private static List<Imovel> imoveis = new ArrayList<>();
     private static ArrayList<Fatura> listaFaturas = new ArrayList<>();
     private static ArrayList<Pagamento> listaPagamentos = new ArrayList<>();
+    private static List<Falha> falhas = new ArrayList<>();
+    private static List<Reparo> reparos = new ArrayList<>();
 
-    // Incluir cliente
     public static void incluirCliente(Cliente cliente) {
         clientes.add(cliente);
     }
@@ -174,55 +177,126 @@ public class App {
     }
 
     private static void incluirPagamento(Scanner scanner) {
-        /*
-         * System.out.print("Informe o valor do pagamento: ");
-         * double valor = scanner.nextDouble();
-         * 
-         * System.out.print("Informe o código da fatura: ");
-         * int codigoFatura = scanner.nextInt();
-         * 
-         * Fatura fatura = encontrarFaturaPorCodigo(codigoFatura);
-         * 
-         * if (fatura != null && !fatura.isQuitada()) {
-         * Date data = new Date();
-         * Pagamento pagamento = new Pagamento(valor, data, "Pagamento");
-         * 
-         * if (valor > fatura.getValorRestante()) {
-         * // Se o pagamento supera o valor da fatura, gera um reembolso
-         * double valorReembolso = valor - fatura.getValorRestante();
-         * Reembolso reembolso = new Reembolso(valorReembolso, data);
-         * listaReembolsos.add(reembolso);
-         * System.out.println("Reembolso gerado: " + valorReembolso);
-         * }
-         * 
-         * listaPagamentos.add(pagamento);
-         * fatura.adicionarPagamento(pagamento);
-         * 
-         * System.out.println("Pagamento incluído com sucesso!");
-         * } else {
-         * System.out.println("Fatura não encontrada ou já quitada.");
-         * }
-         */
+        System.out.print("Informe o valor do pagamento: ");
+        double valor = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("Informe a data do pagamento (no formato dd/MM/yyyy): ");
+        String dataString = scanner.nextLine();
+
+        Date data;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            data = dateFormat.parse(dataString);
+        } catch (ParseException e) {
+            System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            return;
+        }
+
+        Pagamento pagamento = new Pagamento(valor, data, "Pagamento");
+
+        System.out.print("Informe o valor do reembolso associado (0 se não houver): ");
+        double valorReembolso = scanner.nextDouble();
+        scanner.nextLine();
+
+        if (valorReembolso > 0) {
+            Reembolso reembolso = new Reembolso(valorReembolso, new Date());
+            pagamento.setReembolso(reembolso);
+        }
+
+        listaPagamentos.add(pagamento);
+
+        System.out.println("Pagamento incluído com sucesso!");
+    }
+
+    private static void listarPagamentos() {
+        System.out.println("\nLista de Pagamentos:");
+        for (Pagamento pagamento : listaPagamentos) {
+            if ("Pagamento".equals(pagamento.getTipo())) {
+                pagamento.exibirDetalhes();
+            }
+        }
     }
 
     private static void listarReembolsos() {
-        /*
-         * System.out.println("Lista de Reembolsos:");
-         * for (Reembolso reembolso : listaReembolsos) {
-         * reembolso.exibirDetalhes();
-         * }
-         */
+        System.out.println("\nLista de Reembolsos:");
+        for (Pagamento pagamento : listaPagamentos) {
+            if ("Pagamento".equals(pagamento.getTipo()) && pagamento.getReembolso() != null) {
+                pagamento.getReembolso().exibirDetalhes();
+            }
+        }
     }
 
-    private static void encontrarFaturaPorCodigo(int codigoFatura) {
-        /*
-         * for (Fatura fatura : listaFaturas) {
-         * if (fatura.getCodigo() == codigoFatura) {
-         * return fatura;
-         * }
-         * }
-         * return null;
-         */
+    private static void incluirFalha(Scanner scanner) {
+        System.out.println("Inclusão de Falhas");
+        System.out.print("A falha é de geração? (true/false): ");
+        boolean deGeracao = scanner.nextBoolean();
+
+        Falha falha = new Falha(deGeracao);
+        falhas.add(falha);
+
+        if (!deGeracao) {
+            System.out.println("Esta falha requer reparo. Criando reparo...");
+            criarReparo(scanner, falha);
+        }
+
+        System.out.println("Falha incluída com sucesso!");
+    }
+
+    private static void criarReparo(Scanner scanner, Falha falha) {
+        System.out.println("Criando Reparo");
+        System.out.print("Descrição do Reparo: ");
+        String descricao = scanner.next();
+
+        Reparo reparo = new Reparo(descricao, falha);
+        reparos.add(reparo);
+
+        System.out.println("Reparo criado com sucesso!");
+    }
+
+    private static void listarReparosEmAberto() {
+        System.out.println("\nReparos em Aberto:");
+        for (Reparo reparo : reparos) {
+            if (!reparo.isConcluido()) {
+                reparo.exibirDetalhes();
+            }
+        }
+    }
+
+    private static void encerrarReparo(Scanner scanner) {
+        System.out.print("Informe o ID do reparo que deseja encerrar: ");
+        int idReparo = scanner.nextInt();
+
+        Reparo reparo = encontrarReparoPorID(idReparo);
+
+        if (reparo != null && !reparo.isConcluido()) {
+            System.out.println("Encerrando Reparo...");
+            reparo.setConcluido(true);
+
+            if (!falhaResolvida()) {
+                System.out.println("A falha não foi resolvida. Criando novo reparo...");
+                criarReparo(scanner, reparo.getFalha());
+            }
+
+            System.out.println("Reparo encerrado com sucesso!");
+        } else {
+            System.out.println("Reparo não encontrado ou já encerrado.");
+        }
+    }
+
+    private static Reparo encontrarReparoPorID(int idReparo) {
+        for (Reparo reparo : reparos) {
+            if (reparo.getId() == idReparo) {
+                return reparo;
+            }
+        }
+        return null;
+    }
+
+    private static boolean falhaResolvida() {
+        System.out.print("A falha foi resolvida? (true/false): ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextBoolean();
     }
 
     public static void main(String[] args) {
@@ -341,7 +415,6 @@ public class App {
                     System.out.println("Opção inválida.");
             }
         } while (opcaoClientes != 0);
-        // Adicione aqui as ações de cada opção
 
         while (opcaoClientes != 0)
             ;
@@ -365,7 +438,7 @@ public class App {
                     System.out.println("Cadastrar Imóvel");
                     System.out.print("Informe o código do imóvel: ");
                     int matricula = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer do scanner
+                    scanner.nextLine();
 
                     System.out.print("Informe o endereço do imóvel: ");
                     String endereco = scanner.nextLine();
@@ -459,19 +532,15 @@ public class App {
                 case 1:
                     incluirPagamento(scanner);
                     break;
-
                 case 2:
-
+                    listarPagamentos();
                     break;
-
                 case 3:
-
+                    listarReembolsos();
                     break;
-
                 case 0:
                     System.out.println("Saindo...");
                     break;
-
                 default:
                     System.out.println("Opção inválida.");
             }
@@ -491,13 +560,11 @@ public class App {
 
             switch (opcaoFalhas) {
                 case 1:
-                    // Inclusão de Falhas;
+                    incluirFalha(scanner);
                     break;
-
                 case 2:
                     menuReparos(scanner);
                     break;
-
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -520,11 +587,10 @@ public class App {
 
             switch (opcaoReparos) {
                 case 1:
-                    // Listar reparos em aberto;
+                    listarReparosEmAberto();
                     break;
-
                 case 2:
-                    // Encerrar reparo;
+                    encerrarReparo(scanner);
                     break;
 
                 case 0:

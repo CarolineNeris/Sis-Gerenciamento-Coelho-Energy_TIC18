@@ -3,15 +3,19 @@ package Falhas;
 
 public class Falha {
     private boolean deGeracao;
-    // Outros atributos necessários
 
-    // Métodos GET e SET para os atributos
-
-    // Método construtor
     public Falha(boolean deGeracao) {
         this.deGeracao = deGeracao;
-        // Inicialização de outros atributos, se houver
+
     }
 
-    // Outros métodos específicos, se necessário
+    public boolean isDeGeracao() {
+        return deGeracao;
+    }
+
+    public void exibirDetalhes() {
+        System.out.println("\nDetalhes da Falha:");
+        System.out.println("Tipo: " + (deGeracao ? "Geração" : "Distribuição"));
+
+    }
 }
