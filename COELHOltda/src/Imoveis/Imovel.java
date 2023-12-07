@@ -5,6 +5,7 @@ import java.util.List;
 
 import Clientes.Cliente;
 import Faturas.Fatura;
+import Falhas.Falha;  // Importe a classe Falha
 
 public class Imovel {
     private int matricula;
@@ -13,6 +14,7 @@ public class Imovel {
     private int ultimaLeitura;
     private Cliente proprietario;
     private List<Fatura> faturas = new ArrayList<>();
+    private Falha falhaAssociada;  // Adicione a referência à classe Falha
 
     public Imovel() {
 
@@ -59,4 +61,11 @@ public class Imovel {
         this.ultimaLeitura = ultimaLeitura;
     }
 
+    public Falha getFalhaAssociada() {
+        return falhaAssociada;
+    }
+
+    public void setFalhaAssociada(Falha falhaAssociada) {
+        this.falhaAssociada = falhaAssociada;
+    }
 }

@@ -1,17 +1,57 @@
-// Classe Falha
 package Falhas;
 
 public class Falha {
-    private boolean deGeracao;
-    // Outros atributos necessários
+    private String descricao;
+    private String previsao;
+    private String dataInicio;
+    private String dataFim;
 
-    // Métodos GET e SET para os atributos
-
-    // Método construtor
-    public Falha(boolean deGeracao) {
-        this.deGeracao = deGeracao;
-        // Inicialização de outros atributos, se houver
+    public Falha() {
+        // Inicialize os atributos, se for necessário
     }
 
-    // Outros métodos específicos, se necessário
+    // Construtor
+    public Falha(String descricao, String previsao, String dataInicio, String dataFim) {
+        this.descricao = descricao;
+        this.previsao = previsao;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+    }
+
+    // Getters
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getPrevisao() {
+        return previsao;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public String getDataFim() {
+        return dataFim;
+    }
+
+    // Setters
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setPrevisao(String previsao) {
+        this.previsao = previsao;
+    }
+
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public void setDataFim(String dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public void setFalhaResolvida(boolean b) {
+    }
 }
