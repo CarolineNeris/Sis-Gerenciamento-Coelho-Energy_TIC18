@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 import Clientes.*;
 import Reparos.*;
 import Pagamentos.*;
@@ -6,11 +10,6 @@ import Imoveis.*;
 import Falhas.*;
 import Faturas.*;
 import Faturas.Fatura;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
 
 public class App {
     private static List<Cliente> clientes = new ArrayList<>();
@@ -281,24 +280,24 @@ public class App {
     private static void encerrarReparo(Scanner scanner) {
         System.out.print("Informe a descrição da atividade a ser encerrada: ");
         String descricaoAtividade = scanner.next();
-    
+
         for (Reparos reparo : listaReparos) {
             if (!reparo.isFalhaResolvida() && reparo.getDescricaoAtividade().equals(descricaoAtividade)) {
                 // Obtém a falha associada ao reparo
                 Falha falhaAssociada = reparo.getFalhaAssociada();
-    
+
                 if (falhaAssociada != null) {
                     System.out.print("Informe a data de encerramento do reparo: ");
                     String dataEncerramento = scanner.next();
-    
+
                     // Atualiza a falha associada ao reparo
                     falhaAssociada.setFalhaResolvida(true);
                     falhaAssociada.setDataFim(dataEncerramento);
-    
+
                     // Atualiza o reparo
                     reparo.setFalhaResolvida(true);
                     reparo.atualizarDataFim(dataEncerramento);
-    
+
                     System.out.println("Reparo encerrado com sucesso!");
                     return;
                 } else {
@@ -306,10 +305,9 @@ public class App {
                 }
             }
         }
-    
+
         System.out.println("Reparo não encontrado ou já encerrado.");
     }
-    
 
     public static void main(String[] args) {
 
