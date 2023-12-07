@@ -1,21 +1,50 @@
-// Classe Pagamento
 package Pagamentos;
 
-import Faturas.Fatura;
+import java.util.Date;
+
+import Reembolsos.Reembolso;
 
 public class Pagamento {
-    private Fatura fatura;
     private double valor;
-    // Outros atributos necessários
+    private Date data;
+    private String tipo; // "Pagamento" ou "Reembolso"
+    private Reembolso reembolso;
 
-    // Métodos GET e SET para os atributos
-
-    // Método construtor
-    public Pagamento(Fatura fatura, double valor) {
-        this.fatura = fatura;
+    public Pagamento(double valor, Date data, String tipo) {
         this.valor = valor;
-        // Inicialização de outros atributos, se houver
+        this.data = data;
+        this.tipo = tipo;
+        this.reembolso = null;
     }
 
-    // Outros métodos específicos, se necessário
+    public double getValor() {
+        return valor;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public Reembolso getReembolso() {
+        return reembolso;
+    }
+
+    public void setReembolso(Reembolso reembolso) {
+        this.reembolso = reembolso;
+    }
+
+    public void exibirDetalhes() {
+        System.out.println("\nDetalhes do " + tipo + ":");
+        System.out.println("Valor: " + valor);
+        System.out.println("Data: " + data);
+
+        if (reembolso != null) {
+            System.out.println("Reembolso associado:");
+            reembolso.exibirDetalhes();
+        }
+    }
 }

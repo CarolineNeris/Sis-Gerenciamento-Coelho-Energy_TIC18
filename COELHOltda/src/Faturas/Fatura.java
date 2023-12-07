@@ -3,8 +3,6 @@ package Faturas;
 
 import java.util.Date;
 
-
-
 public class Fatura {
     private double ultimaLeitura;
     private double penultimaLeitura;
@@ -13,7 +11,6 @@ public class Fatura {
     private int matricula;
     private Date dataEmissao;
 
-    // Construtor...
     public Fatura(int matricula, double ultimaLeitura, double penultimaLeitura) {
         this.matricula = matricula;
         this.ultimaLeitura = ultimaLeitura;
@@ -23,12 +20,10 @@ public class Fatura {
         this.quitada = false;
     }
 
-    // Método privado para calcular o valor...
     private double calcularValor() {
         return 10 * (ultimaLeitura - penultimaLeitura);
     }
 
-    // Método público para exibir detalhes da fatura...
     public void exibirDetalhes() {
         System.out.println("\nDetalhes da Fatura:");
         System.out.println("Matrícula: " + matricula);
@@ -37,5 +32,55 @@ public class Fatura {
         System.out.println("Penúltima Leitura: " + penultimaLeitura);
         System.out.println("Valor Calculado: " + valorCalculado);
         System.out.println("Quitada: " + (quitada ? "Sim" : "Não"));
+    }
+
+    // Getters e Setters
+
+    public double getUltimaLeitura() {
+        return ultimaLeitura;
+    }
+
+    public void setUltimaLeitura(double ultimaLeitura) {
+        this.ultimaLeitura = ultimaLeitura;
+    }
+
+    public double getPenultimaLeitura() {
+        return penultimaLeitura;
+    }
+
+    public void setPenultimaLeitura(double penultimaLeitura) {
+        this.penultimaLeitura = penultimaLeitura;
+    }
+
+    public double getValorCalculado() {
+        return valorCalculado;
+    }
+
+    public void setValorCalculado(double valorCalculado) {
+        this.valorCalculado = valorCalculado;
+    }
+
+    public boolean isQuitada() {
+        return quitada;
+    }
+
+    public void setQuitada(boolean quitada) {
+        this.quitada = quitada;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public Date getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(Date dataEmissao) {
+        this.dataEmissao = dataEmissao;
     }
 }

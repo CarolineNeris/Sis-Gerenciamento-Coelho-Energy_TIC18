@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Clientes.Cliente;
+import Faturas.Fatura;
 
 public class Imovel {
     private int matricula;
@@ -11,7 +12,7 @@ public class Imovel {
     private int penultimaLeitura;
     private int ultimaLeitura;
     private Cliente proprietario;
-    private static List<Imovel> imoveis = new ArrayList<>();
+    private List<Fatura> faturas = new ArrayList<>();
 
     public Imovel() {
 
@@ -58,25 +59,4 @@ public class Imovel {
         this.ultimaLeitura = ultimaLeitura;
     }
 
-    public static void incluirImovel(Imovel imovel) {
-        imoveis.add(imovel);
-    }
-
-    public static Imovel pesquisarImovel(int matricula) {
-        for (Imovel imovel : imoveis) {
-            if (imovel.getMatricula() == matricula) {
-                return imovel;
-            }
-        }
-        return null;
-    }
-
-    public static boolean excluirImovel(int matricula) {
-        for (Imovel imovel : imoveis) {
-            if (imovel.getMatricula() == matricula) {
-                return imoveis.remove(imovel);
-            }
-        }
-        return false;
-    }
 }
