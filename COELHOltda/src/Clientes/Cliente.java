@@ -9,9 +9,8 @@ public class Cliente {
     private String nome;
     private String cpf;
     private List<Imovel> imoveis = new ArrayList<Imovel>();
-    // Declaração da lista de clientes como estática
 
-    public Cliente() { // Adição do construtor vazio
+    public Cliente() {
     }
 
     public Cliente(String nome, String cpf) {
@@ -19,7 +18,6 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    // Métodos para acessar e modificar os atributos
     public String getNome() {
         return nome;
     }

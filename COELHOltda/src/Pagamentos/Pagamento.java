@@ -7,7 +7,7 @@ import Reembolsos.Reembolso;
 public class Pagamento {
     private double valor;
     private Date data;
-    private String tipo; // "Pagamento" ou "Reembolso"
+    private String tipo;
     private Reembolso reembolso;
 
     public Pagamento(double valor, Date data, String tipo) {

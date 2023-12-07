@@ -303,87 +303,96 @@ public class App {
         return scanner.nextBoolean();
     }
 
-    private static void incluirFalha(Scanner scanner) {
-        System.out.print("Informe a descrição da falha: ");
-        String descricao = scanner.next();
+    /*
+     * private static void incluirFalha(Scanner scanner) {
+     * System.out.print("Informe a descrição da falha: ");
+     * String descricao = scanner.next();
+     * 
+     * System.out.print("Informe a previsão para a resolução: ");
+     * String previsao = scanner.next();
+     * 
+     * System.out.print("Informe a data de início da falha: ");
+     * String dataInicio = scanner.next();
+     * 
+     * System.out.print("Informe a data de fim da falha: ");
+     * String dataFim = scanner.next();
+     * 
+     * System.out.
+     * print("Informe o tipo de falha (G para Geração, D para Distribuição): ");
+     * char tipoFalha = scanner.next().charAt(0);
+     * 
+     * Falha novaFalha;
+     * if (tipoFalha == 'G') {
+     * novaFalha = new FalhaGeracao(descricao, previsao, dataInicio, dataFim);
+     * } else if (tipoFalha == 'D') {
+     * novaFalha = new FalhaDistribuicao(descricao, previsao, dataInicio, dataFim);
+     * } else {
+     * System.out.println("Tipo de falha inválido.");
+     * return;
+     * }
+     * 
+     * novaFalha.setDescricao(descricao);
+     * novaFalha.setPrevisao(previsao);
+     * novaFalha.setDataInicio(dataInicio);
+     * novaFalha.setDataFim(dataFim);
+     * 
+     * // Agora você pode adicionar a novaFalha à lista de falhas
+     * // (certifique-se de ter uma lista de falhas no seu App)
+     * // listaFalhas.add(novaFalha);
+     * 
+     * System.out.println("Falha incluída com sucesso!");
+     * }
+     */
 
-        System.out.print("Informe a previsão para a resolução: ");
-        String previsao = scanner.next();
+    /*
+     * private static void listarReparosEmAberto() {
+     * System.out.println("Lista de Reparos em Aberto:");
+     * for (Reparos reparo : listaReparos) {
+     * if (!reparo.isFalhaResolvida()) {
+     * System.out.println("Descrição da atividade: " +
+     * reparo.getDescricaoAtividade());
+     * System.out.println("Previsão inicial: " + reparo.getPrevisaoInicial());
+     * System.out.println("Data de início: " + reparo.getDataInicio());
+     * System.out.println("--------------------");
+     * }
+     * }
+     * }
+     */
 
-        System.out.print("Informe a data de início da falha: ");
-        String dataInicio = scanner.next();
-
-        System.out.print("Informe a data de fim da falha: ");
-        String dataFim = scanner.next();
-
-        System.out.print("Informe o tipo de falha (G para Geração, D para Distribuição): ");
-        char tipoFalha = scanner.next().charAt(0);
-
-        Falha novaFalha;
-        if (tipoFalha == 'G') {
-            novaFalha = new FalhaGeracao(descricao, previsao, dataInicio, dataFim);
-        } else if (tipoFalha == 'D') {
-            novaFalha = new FalhaDistribuicao(descricao, previsao, dataInicio, dataFim);
-        } else {
-            System.out.println("Tipo de falha inválido.");
-            return;
-        }
-
-        novaFalha.setDescricao(descricao);
-        novaFalha.setPrevisao(previsao);
-        novaFalha.setDataInicio(dataInicio);
-        novaFalha.setDataFim(dataFim);
-
-        // Agora você pode adicionar a novaFalha à lista de falhas
-        // (certifique-se de ter uma lista de falhas no seu App)
-        // listaFalhas.add(novaFalha);
-
-        System.out.println("Falha incluída com sucesso!");
-    }
-
-    private static void listarReparosEmAberto() {
-        System.out.println("Lista de Reparos em Aberto:");
-        for (Reparos reparo : listaReparos) {
-            if (!reparo.isFalhaResolvida()) {
-                System.out.println("Descrição da atividade: " + reparo.getDescricaoAtividade());
-                System.out.println("Previsão inicial: " + reparo.getPrevisaoInicial());
-                System.out.println("Data de início: " + reparo.getDataInicio());
-                System.out.println("--------------------");
-            }
-        }
-    }
-
-    private static void encerrarReparo(Scanner scanner) {
-        System.out.print("Informe a descrição da atividade a ser encerrada: ");
-        String descricaoAtividade = scanner.next();
-
-        for (Reparos reparo : listaReparos) {
-            if (!reparo.isFalhaResolvida() && reparo.getDescricaoAtividade().equals(descricaoAtividade)) {
-                // Obtém a falha associada ao reparo
-                Falha falhaAssociada = reparo.getFalhaAssociada();
-
-                if (falhaAssociada != null) {
-                    System.out.print("Informe a data de encerramento do reparo: ");
-                    String dataEncerramento = scanner.next();
-
-                    // Atualiza a falha associada ao reparo
-                    falhaAssociada.setFalhaResolvida(true);
-                    falhaAssociada.setDataFim(dataEncerramento);
-
-                    // Atualiza o reparo
-                    reparo.setFalhaResolvida(true);
-                    reparo.atualizarDataFim(dataEncerramento);
-
-                    System.out.println("Reparo encerrado com sucesso!");
-                    return;
-                } else {
-                    System.out.println("Falha associada não encontrada.");
-                }
-            }
-        }
-
-        System.out.println("Reparo não encontrado ou já encerrado.");
-    }
+    /*
+     * private static void encerrarReparo(Scanner scanner) {
+     * System.out.print("Informe a descrição da atividade a ser encerrada: ");
+     * String descricaoAtividade = scanner.next();
+     * 
+     * for (Reparos reparo : listaReparos) {
+     * if (!reparo.isFalhaResolvida() &&
+     * reparo.getDescricaoAtividade().equals(descricaoAtividade)) {
+     * // Obtém a falha associada ao reparo
+     * Falha falhaAssociada = reparo.getFalhaAssociada();
+     * 
+     * if (falhaAssociada != null) {
+     * System.out.print("Informe a data de encerramento do reparo: ");
+     * String dataEncerramento = scanner.next();
+     * 
+     * // Atualiza a falha associada ao reparo
+     * falhaAssociada.setFalhaResolvida(true);
+     * falhaAssociada.setDataFim(dataEncerramento);
+     * 
+     * // Atualiza o reparo
+     * reparo.setFalhaResolvida(true);
+     * reparo.atualizarDataFim(dataEncerramento);
+     * 
+     * System.out.println("Reparo encerrado com sucesso!");
+     * return;
+     * } else {
+     * System.out.println("Falha associada não encontrada.");
+     * }
+     * }
+     * }
+     * 
+     * System.out.println("Reparo não encontrado ou já encerrado.");
+     * }
+     */
 
     public static void main(String[] args) {
 
