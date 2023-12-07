@@ -1,57 +1,20 @@
 package Falhas;
 
 public class Falha {
-    private String descricao;
-    private String previsao;
-    private String dataInicio;
-    private String dataFim;
+    private boolean deGeracao;
 
-    public Falha() {
-        // Inicialize os atributos, se for necessário
+    public Falha(boolean deGeracao) {
+        this.deGeracao = deGeracao;
+
     }
 
-    // Construtor
-    public Falha(String descricao, String previsao, String dataInicio, String dataFim) {
-        this.descricao = descricao;
-        this.previsao = previsao;
-        this.dataInicio = dataInicio;
-        this.dataFim = dataFim;
+    public boolean isDeGeracao() {
+        return deGeracao;
     }
 
-    // Getters
-    public String getDescricao() {
-        return descricao;
-    }
+    public void exibirDetalhes() {
+        System.out.println("\nDetalhes da Falha:");
+        System.out.println("Tipo: " + (deGeracao ? "Geração" : "Distribuição"));
 
-    public String getPrevisao() {
-        return previsao;
-    }
-
-    public String getDataInicio() {
-        return dataInicio;
-    }
-
-    public String getDataFim() {
-        return dataFim;
-    }
-
-    // Setters
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public void setPrevisao(String previsao) {
-        this.previsao = previsao;
-    }
-
-    public void setDataInicio(String dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public void setDataFim(String dataFim) {
-        this.dataFim = dataFim;
-    }
-
-    public void setFalhaResolvida(boolean b) {
     }
 }
