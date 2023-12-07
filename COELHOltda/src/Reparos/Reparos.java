@@ -2,6 +2,10 @@
 package Reparos;
 
 import Imoveis.Imovel;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import Falhas.Falha;
 
 public class Reparos {
@@ -14,6 +18,33 @@ public class Reparos {
     // Outros atributos necessários
 
     // Métodos GET e SET para os atributos
+    public Falha getFalhaAssociada() {
+        return falhaAssociada;
+    }
+    
+    public String getDescricaoAtividade() {
+        return descricaoAtividade;
+    }
+    
+    public String getPrevisaoInicial() {
+        return previsaoInicial;
+    }
+    
+    public String getDataInicio() {
+        return dataInicio;
+    }
+    
+    public String getDataFim() {
+        return dataFim;
+    }
+    
+    public boolean isFalhaResolvida() {
+        return falhaResolvida;
+    }
+    
+    public void setFalhaResolvida(boolean falhaResolvida) {
+        this.falhaResolvida = falhaResolvida;
+    }    
 
     // Método construtor
     public Reparos(Falha falhaAssociada, String descricaoAtividade, String previsaoInicial, String dataInicio,
@@ -28,4 +59,16 @@ public class Reparos {
     }
 
     // Outros métodos específicos, se necessário
+    public void atualizarDataFim(String novaDataFim) {
+        this.dataFim = novaDataFim;
+    }
+
+    // Método para verificar se o reparo está atrasado
+    public boolean estaAtrasado() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dataFimReparo = LocalDate.parse(dataFim, formatter);
+        LocalDate dataAtual = LocalDate.now();
+
+        return dataFimReparo.isBefore(dataAtual) && !falhaResolvida;
+    }
 }

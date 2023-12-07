@@ -18,6 +18,8 @@ public class App {
     private static ArrayList<Fatura> listaFaturas = new ArrayList<>();
     private static ArrayList<Pagamento> listaPagamentos = new ArrayList<>();
 
+    private static ArrayList<Reparos> listaReparos = new ArrayList<>();
+
     // Incluir cliente
     public static void incluirCliente(Cliente cliente) {
         clientes.add(cliente);
@@ -224,6 +226,38 @@ public class App {
          * return null;
          */
     }
+
+    private static void listarReparosEmAberto() {
+        System.out.println("Lista de Reparos em Aberto:");
+        for (Reparos reparo : listaReparos) {
+            if (!reparo.isFalhaResolvida()) {
+                System.out.println("Descrição da atividade: " + reparo.getDescricaoAtividade());
+                System.out.println("Previsão inicial: " + reparo.getPrevisaoInicial());
+                System.out.println("Data de início: " + reparo.getDataInicio());
+                System.out.println("--------------------");
+            }
+        }
+    }
+    
+    private static void encerrarReparo(Scanner scanner) {
+        System.out.print("Informe a descrição da atividade a ser encerrada: ");
+        String descricaoAtividade = scanner.next();
+    
+        for (Reparos reparo : listaReparos) {
+            if (!reparo.isFalhaResolvida() && reparo.getDescricaoAtividade().equals(descricaoAtividade)) {
+                System.out.print("Informe a data de encerramento do reparo: ");
+                String dataEncerramento = scanner.next();
+    
+                reparo.setFalhaResolvida(true);
+                reparo.atualizarDataFim(dataEncerramento);
+    
+                System.out.println("Reparo encerrado com sucesso!");
+                return;
+            }
+        }
+    
+        System.out.println("Reparo não encontrado ou já encerrado.");
+    }    
 
     public static void main(String[] args) {
 
@@ -520,11 +554,11 @@ public class App {
 
             switch (opcaoReparos) {
                 case 1:
-                    // Listar reparos em aberto;
+                    listarReparosEmAberto();
                     break;
 
                 case 2:
-                    // Encerrar reparo;
+                    encerrarReparo(scanner);
                     break;
 
                 case 0:
